@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
+# Copied and simplified for Python 2 from:
+# https://github.com/mdn/webextensions-examples/tree/master/native-messaging
 import subprocess
 import sys
 import json
 import struct
 
-# Python 2.x version (if sys.stdin.buffer is not defined)
+# Python 2.x version (when sys.stdin.buffer is not defined)
 # Read a message from stdin and decode it.
 def getMessage():
     rawLength = sys.stdin.read(4)
