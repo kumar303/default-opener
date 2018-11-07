@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 # Copied and simplified for Python 2 from:
 # https://github.com/mdn/webextensions-examples/tree/master/native-messaging
@@ -26,11 +26,11 @@ def encodeMessage(messageContent):
 
 # Send an encoded message to stdout
 def sendMessage(encodedMessage):
-    sys.stdout.write(encodedMessage['length'])
-    sys.stdout.write(encodedMessage['content'])
+    #sys.stdout.write(encodedMessage['length'])
+    #sys.stdout.write(encodedMessage['content'])
     sys.stdout.flush()
 
 while True:
     receivedMessage = getMessage()
-    subprocess.check_call(['open', receivedMessage['link']]);
+    subprocess.check_call(['/bin/chromium', receivedMessage['link']]);
     sendMessage(encodeMessage('OK'))
