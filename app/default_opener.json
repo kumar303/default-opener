@@ -1,7 +1,7 @@
 {
   "name": "default_opener",
   "description": "Allows you to open a link in your default browser",
-  "path": "/Users/kumar/dev/default-opener/app/default_opener.py",
+  "path": "WHERE/DID/YOU/CLONE/default-opener/app/default_opener.py",
   "type": "stdio",
-  "allowed_origins": [ "chrome-extension://dehppekledagpdijhjbphlnpfednmoce/"  ]
+  "allowed_origins": [ "chrome-extension://extensionidfromthechromiummenu/"  ]
 }
