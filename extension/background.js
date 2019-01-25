@@ -4,7 +4,7 @@ var port = chrome.runtime.connectNative("default_opener");
  * Call the native appliction with this url to open it with the default browser
  */
 function callUrl(url) {
-    console.log(`Sending: link ${url} `);
+    console.log(`Sending: link ${url}`);
     port.postMessage({link: url});
 }
 
@@ -14,8 +14,6 @@ port.onMessage.addListener((response) => {
 
 port.onDisconnect.addListener(() => {
     console.log("Port was disconnected. Error:", chrome.runtime.lastError);
-    /* If we lost connection, simply reconnect. */
-    port = chrome.runtime.connectNative("default_opener");
 });
 
 /** Create a new context menu to open links with an external browser */
@@ -27,7 +25,7 @@ chrome.contextMenus.create({
   }
 });
 
-/** I have no idea what this does */
+/** Open the current tab in the default browser if the extension button in the toolbar is pressed */
 chrome.browserAction.onClicked.addListener(function(tab) {
     callUrl(tab.url);
 })
@@ -45,9 +43,7 @@ chrome.runtime.onMessage.addListener(
             callUrl(sender.tab.url);
             chrome.tabs.remove(sender.tab.id);
         }
-    }
-
-    else {
+    } else {
         sendResponse({response: "nothing"});
     }
 
